@@ -1,8 +1,7 @@
-require_dependency 'version'
+# Visto en el blog ese que dice que no hace falta require. Blog sobre como hacer plugins de redmine
+#require_dependency 'version'
 
 include CustomFieldsHelper
-include ApplicationHelper
-
 
 # Engade o campo contorno ao modelo de Version. 
 module VersionPatch
@@ -46,14 +45,14 @@ module VersionPatch
     
     def tipo_version
       # Añade el campo tipo_version al objecto Version. Permite mostrar el tipo de version para cada caso
-      # TODO: Esta hardcoded el nombre del campo personalizado de la version. Para que funcione depende del nombre
-      # habría que sacar este nombre como parámetro externo.
       tp=nil
-      render_custom_field_values(self) do |custom_field, formatted| 
-        if custom_field.name==Setting.plugin_estatisticas['tipo_version']
-           tp=formatted
+
+      self.visible_custom_field_values.each do | custom_value|
+        if custom_value.custom_field.name==Setting.plugin_estatisticas['tipo_version']
+          tp=custom_value.value
         end
-      end 
+      end
+
       return tp
     end
 
