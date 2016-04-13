@@ -1,0 +1,19 @@
+# English strings go here for Rails i18n
+es:
+  # my_label: "My label"
+  permission_ver_estatisticas: Ver estadisticas
+
+  label_filtro_versions: Versiones
+
+  label_menu_estatisticas: Estadística
+
+  label_nome_version: Nombre
+  label_desc_version: Descripción versión
+  label_data_version: Fecha despliegue
+  label_total_tempo_estimado: Tiempo estimado total
+  label_total_tempo_gastado: Tiempo incurrido total
+  label_tanto_porcento_completado: Completado
+  label_contorno: Entorno
+
+  label_data_dende: Desde(>=)
+  label_data_ata: Hasta(<=)

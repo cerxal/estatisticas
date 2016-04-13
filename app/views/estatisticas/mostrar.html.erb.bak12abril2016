@@ -1,0 +1,77 @@
+<% include_calendar_headers_tags %>
+
+<h2>Estatisticas</h2>
+
+<h2><%=l(:label_filtro_versions)%></h2>
+
+<%= form_tag({ :controller => 'estatisticas', :action => 'mostrar', :project_id => @project }, :params => params, :method => :get, :id => 'query_form') do %>
+
+<fieldset><legend><%= l(:label_filter_plural) %></legend>
+<label for='contorno'><%= l(:label_contorno) %>:</label>
+<%= select_tag "contorno", "<option>STG</option><option>PRO</option>".html_safe, :selected => params[:contorno], :include_blank => "true", :class => "small", :onchange => "this.form.submit(); return false;"  %>
+
+<label for='data_dende'><%= l(:label_data_dende) %>:</label>
+<%= text_field_tag 'data_dende', params[:data_dende], size: 12, maxlength: 10, :class => 'datepicker' %>
+
+<label for='data_ata'><%= l(:label_data_ata) %>:</label>
+<%= text_field_tag 'data_ata', params[:data_ata], size: 12, maxlength: 10, :class => 'datepicker' %>
+
+<%= submit_tag l(:button_apply), :class => "small", :name => nil %>
+<%= link_to l(:button_clear), {:project_id => @project}, :class => 'icon icon-reload' %>
+</fieldset>
+<% end %>
+&nbsp;
+
+<div class="autoscroll">
+<table class="list">
+<thead><tr>
+<%= sort_header_tag('name', :caption => l(:label_nome_version)) %>
+<%= sort_header_tag('description', :caption => l(:label_desc_version)) %>
+<%= sort_header_tag('effective_date', :caption => l(:label_data_version)) %>
+<th><%= l(:label_total_tempo_estimado)%></th>
+<th><%= l(:label_total_tempo_gastado)%></th>
+<th><%= l(:label_tanto_porcento_completado)%></th>
+<th><%= l(:label_contorno)%></th>
+</tr></thead>
+<tbody>
+<% @versions.each do |version| %>
+  <tr class="<%= cycle("odd", "even") %>">
+     <td><%= link_to(h(version.name), :controller => :versions, :action => :show, :id => version) %></td>
+     <td>
+       <%= version.description%>
+     </td>
+     <td>
+       <%= version.effective_date%>
+     </td>
+     <td>
+       <%= version.estimated_hours%>
+     </td>
+     <td>
+       <%= version.spent_hours%>
+     </td>
+     <td>
+       <%= number_to_percentage(version.completed_percent, precision:0 )%>
+     </td>
+     <td>
+       <%= version.contorno %>
+     </td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+</div>
+
+<% other_formats_links do |f| %>
+  <%= f.link_to 'CSV', :url => params %>
+  <%#= f.link_to 'PDF', :url => params %>
+<% end %>
+
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'aplicacion', :plugin => 'estatisticas' %>
+<% end %>
+
+<script>
+  $(document).ready(function () {
+     $('.datepicker').datepicker();
+    });
+</script>
