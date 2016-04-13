@@ -12,5 +12,10 @@
   background-image: url("../images/sort_desc.png");
 }
 
-.retrasada th {background: green;}
-.puntual th {background: grey;}
+.puntual {
+    color: green;
+}
+
+.retrasada {
+    color: red;
+}

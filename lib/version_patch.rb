@@ -38,6 +38,7 @@ module VersionPatch
     #end
 
     # Añade el metodo contorno al modelo de la version, calculado a partir de la numeracion de la version
+    # TODO: Añadir el patron de la version como un elemento configurable del plugin.
     def contorno
       patronversion = "(^[0-9]+\.{0}\.[0-9]+\.[0-9]+$)"
       return self.to_s.match(patronversion) ? "PRO" : "STG"

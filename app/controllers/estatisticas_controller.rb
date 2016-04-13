@@ -1,5 +1,5 @@
 class EstatisticasController < ApplicationController
-  unloadable
+  menu_item :ver_estatisticas
 
   before_filter :find_project, :authorize, :only => :mostrar
 
@@ -33,6 +33,7 @@ class EstatisticasController < ApplicationController
       end
 
       # Contorno
+      # TODO: Incluir el patronversion y los nombres de los entornos como elementos de configuracion del plugin
       patronversion = "(^[0-9]+\.{0}\.[0-9]+\.[0-9]+$)"
       if params[:contorno].present?
 	if params[:contorno]=='STG' 

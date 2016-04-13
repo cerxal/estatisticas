@@ -20,7 +20,7 @@ module EstatisticasHelper
   
   # Es el nombre de las CSS para los colores de las versiones no "overdue" (puntual) y overdue (retrasada)
   def clase_version_retrasada(detras)
-    return detras ? 'puntual' : 'retrasada'
+    return detras ? 'retrasada' : 'puntual'
   end
 
   def version_to_csv(items, columns)

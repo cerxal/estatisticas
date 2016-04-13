@@ -39,12 +39,12 @@
 </tr></thead>
 <tbody>
 <% @versions.each do |version| %>
-  <tr class="<%= cycle("odd", "even") %> <%= clase_version_retrasada(version.overdue?)%>">
+  <tr class="<%= cycle("odd", "even") %>">
      <td><%= link_to(h(version.name), :controller => :versions, :action => :show, :id => version) %></td>
      <td>
        <%= version.description %>
      </td>
-     <td>
+     <td class="<%= clase_version_retrasada(version.overdue?)%>">
        <%= version.effective_date%>
      </td>
      <td>
