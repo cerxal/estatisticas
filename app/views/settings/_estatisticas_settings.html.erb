@@ -1,0 +1,9 @@
+<%- defaults = Redmine::Plugin::registered_plugins[:estatisticas].settings[:default] -%>
+
+<p>
+Debes crear un campo personalizado para o tipo de versión co nome que se configura nesta pantalla. Isto permitirá que o listado de versións mostre o tipo da versión </p>
+</p>
+<p>
+<%= label_tag 'settings[tipo_version]', l(:label_setting_tipo_version) %>
+<%= text_field_tag('settings[tipo_version]', @settings["tipo_version"] || defaults["tipo_version"]) %>
+</p>
