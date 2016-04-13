@@ -12,6 +12,16 @@ module EstatisticasHelper
                         ["#{l(:status_registered)} (#{user_count_by_status[2].to_i})", '2'],
                         ["#{l(:status_locked)} (#{user_count_by_status[3].to_i})", '3']], selected.to_s)
   end
+  
+  # Obten os Si/Non a partires do true, false que engadin no locale
+  def humanize_boolean(boolean)
+    I18n.t((!!boolean).to_s)
+  end  
+  
+  # Es el nombre de las CSS para los colores de las versiones no "overdue" (puntual) y overdue (retrasada)
+  def clase_version_retrasada(detras)
+    return detras ? 'puntual' : 'retrasada'
+  end
 
   def version_to_csv(items, columns)
     # Pasamoslle os items da lista de versions e o nome das columnas
@@ -23,7 +33,9 @@ module EstatisticasHelper
 
       # Incluir filas 
       items.each do |item|
-        csv << [item.name, item.description, item.due_date, item.estimated_hours, item.spent_hours, sprintf("%.2f",item.completed_percent).gsub('.', l(:general_csv_decimal_separator))]
+        csv << [item.name, item.description, item.due_date, item.estimated_hours, item.spent_hours, 
+				sprintf("%.2f",item.completed_percent).gsub('.', l(:general_csv_decimal_separator)) + humanize_boolean(item.completed?), 
+				item.tipo_version, item.status, item.contorno]
       end
     end
 

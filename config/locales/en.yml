@@ -3,7 +3,7 @@ en:
   # my_label: "My label"
   permission_ver_estatisticas: View statistics
 
-  label_filtro_versions: Versions
+  label_filtro_versions: Versions table
 
   label_menu_estatisticas: Statistics
 
@@ -13,7 +13,16 @@ en:
   label_total_tempo_estimado: Total estimated time
   label_total_tempo_gastado: Total spent time
   label_tanto_porcento_completado: Completed
+  label_estado_version: Status 
+  label_versions_pechadas: Include closed ver.
+  
   label_contorno: Environment
-
   label_data_dende: From(>=)
   label_data_to: To(<=)
+
+  label_tipo_version: Type
+  
+  label_setting_tipo_version: Custom field for version type
+  
+  :true: 'Yes'
+  :false: 'No'

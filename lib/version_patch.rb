@@ -1,15 +1,22 @@
 require_dependency 'version'
 
+include CustomFieldsHelper
+include ApplicationHelper
+
+
 # Engade o campo contorno ao modelo de Version. 
 module VersionPatch
+
+
   def self.included(base) # :nodoc:
-    base.extend(ClassMethods)
+
+    #base.extend(ClassMethods)
 
     base.send(:include, InstanceMethods)
 
     # Same as typing in the class 
     base.class_eval do
-      unloadable # Send unloadable so it will not be unloaded in development
+      #unloadable # Send unloadable so it will not be unloaded in development
       #alias_method_chain :open_issues_count, :oicp
     end
 
@@ -35,6 +42,19 @@ module VersionPatch
     def contorno
       patronversion = "(^[0-9]+\.{0}\.[0-9]+\.[0-9]+$)"
       return self.to_s.match(patronversion) ? "PRO" : "STG"
+    end
+    
+    def tipo_version
+      # Añade el campo tipo_version al objecto Version. Permite mostrar el tipo de version para cada caso
+      # TODO: Esta hardcoded el nombre del campo personalizado de la version. Para que funcione depende del nombre
+      # habría que sacar este nombre como parámetro externo.
+      tp=nil
+      render_custom_field_values(self) do |custom_field, formatted| 
+        if custom_field.name==Setting.plugin_estatisticas['tipo_version']
+           tp=formatted
+        end
+      end 
+      return tp
     end
 
   end    

@@ -43,16 +43,16 @@ class EstatisticasController < ApplicationController
       end
       # Data dende
       if params[:data_dende].present?
-	dd = Date.parse(params[:data_dende]) rescue nil
+	    dd = Date.parse(params[:data_dende]) rescue nil
         @versions = @versions.where("effective_date >= :data_dende", {data_dende: dd}) 
       end
       # Data ata
       if params[:data_ata].present?
-	da = Date.parse(params[:data_ata]) rescue nil
+	    da = Date.parse(params[:data_ata]) rescue nil
         @versions = @versions.where("effective_date <= :data_ata", {data_ata: da}) 
       end
 
-      logger.debug("ramiro: #{sort_clause.to_s}")
+      #logger.debug("ramiro: #{sort_clause.to_s}")
 
       #Para tener el byebug añadi el require 'bybug' al aplicacion.rb del core y al Gemfile. Habria que sacarlo
       @versions=@versions.order(sort_clause)
@@ -65,7 +65,9 @@ class EstatisticasController < ApplicationController
       columns << t(:label_total_tempo_estimado)
       columns << t(:label_total_tempo_gastado)
       columns << t(:label_tanto_porcento_completado)
+      columns << t(:label_tipo_version)
       columns << t(:label_estado_version)
+      columns << t(:label_contorno)
 
       respond_to do |format|
         format.html 

@@ -11,3 +11,6 @@
 .pretty th .desc {
   background-image: url("../images/sort_desc.png");
 }
+
+.retrasada th {background: green;}
+.puntual th {background: grey;}

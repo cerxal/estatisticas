@@ -10,7 +10,7 @@ end
 Redmine::Plugin.register :estatisticas do
   name 'Estatisticas plugin'
   author 'Ramiro Vazquez'
-  description 'Mostra estatisticas AMTEGA por proxecto'
+  description 'Mostra unha táboa de versións por proxecto'
   version '0.0.1'
 
   project_module :estatisticas do
@@ -18,5 +18,8 @@ Redmine::Plugin.register :estatisticas do
     permission :ver_estatisticas, :estatisticas => :mostrar
     menu :project_menu, :estatisticas, { :controller => 'estatisticas', :action => 'mostrar' }, :caption => :label_menu_estatisticas, :after => :activity, :param => :project_id
   end
+  
+  settings :default => {'tipo_version' => 'Tipo de versión'}, 
+           :partial => 'settings/estatisticas_settings'
 
 end

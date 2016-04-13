@@ -5,7 +5,7 @@ gl:
 
   label_filtro_versions: Taboa de versións
 
-  label_menu_estatisticas: Versións 
+  label_menu_estatisticas: Estatistica 
 
   label_nome_version: Nome
   label_desc_version: Descrición versión
@@ -19,3 +19,10 @@ gl:
   label_contorno: Contorno
   label_data_dende: Dende(>=)
   label_data_ata: Ata(<=)
+  
+  label_tipo_version: Tipo
+  
+  label_setting_tipo_version: Nome campo personalizado tipo da version
+  
+  :true: 'Si'
+  :false: 'Non'

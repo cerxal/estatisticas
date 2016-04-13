@@ -33,20 +33,16 @@
 <th><%= l(:label_total_tempo_estimado)%></th>
 <th><%= l(:label_total_tempo_gastado)%></th>
 <th><%= l(:label_tanto_porcento_completado)%></th>
-<th><%= l(:label_contorno)%></th>
+<th><%= l(:label_tipo_version)%></th>
 <th><%= l(:label_estado_version)%></th>
+<th><%= l(:label_contorno)%></th>
 </tr></thead>
 <tbody>
 <% @versions.each do |version| %>
-  <tr class="<%= cycle("odd", "even") %>">
+  <tr class="<%= cycle("odd", "even") %> <%= clase_version_retrasada(version.overdue?)%>">
      <td><%= link_to(h(version.name), :controller => :versions, :action => :show, :id => version) %></td>
      <td>
-       <p><%=h version.description %></p>
-       <% if version.custom_field_values.any? %>
-         <% render_custom_field_values(version) do |custom_field, formatted| %>
-           <%= custom_field.name %>:<%= formatted %>
-         <% end %>
-       <% end %>
+       <%= version.description %>
      </td>
      <td>
        <%= version.effective_date%>
@@ -59,14 +55,18 @@
      </td>
      <td>
        <%= number_to_percentage(version.completed_percent, precision:0 )%>
-       <%= version.completed? ? 'Si' : 'Non' %>
+       <%= humanize_boolean(version.completed?) %>
      </td>
      <td>
-       <%= version.contorno %>
+       <%= version.tipo_version%>
      </td>
      <td>
        <%= version.status %>
      </td>
+     <td>
+       <%= version.contorno %>
+     </td>
+
   </tr>
 <% end %>
 </tbody>
