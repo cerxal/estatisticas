@@ -9,7 +9,7 @@ end
 
 Redmine::Plugin.register :estatisticas do
   name 'Estatisticas plugin'
-  author 'Ramiro Vazquez'
+  author 'AMTEGA-Xunta de Galicia'
   description 'Mostra unha táboa de versións por proxecto'
   version '0.0.1'
 
