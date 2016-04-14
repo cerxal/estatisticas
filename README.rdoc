@@ -1,12 +1,12 @@
 = Statistics of versions 
 
-Redmine Plugin: Statistics of versions
-======================================
+== Redmine Plugin: Statistics of versions
+=========================================
 
 This plugin provides a view of all the versions of the project, allowing authorized users to filter for different parameters.
 
-Features
-========
+== Features
+==========
 
 The Statistics of Versions plugin for Redmine is a plugin that allows to:
 
@@ -15,8 +15,8 @@ The Statistics of Versions plugin for Redmine is a plugin that allows to:
 3. The color code of deployment date tells us if the version is behind(red) or on time (green)
 4. Text after completed percent indicates if version is completed (all issues closed)
 
-Installation
-============
+== Installation
+==============
 
 Steps:
 
@@ -25,8 +25,8 @@ Steps:
 3.  Uncompress in this folder `tar xvzf /path/to/estatisticas.tar.gz -C plugins/estatisticas`
 4.  Restart your Redmine.
 
-Uninstall
-=========
+== Uninstall
+===========
 
 Steps
 1. Delete plugin directory: `rm -rf plugins/estatisticas`
