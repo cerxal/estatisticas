@@ -48,10 +48,10 @@
        <%= version.effective_date%>
      </td>
      <td>
-       <%= version.estimated_hours%>
+       <%= number_with_precision(version.estimated_hours, precision: 2)%>
      </td>
      <td>
-       <%= version.spent_hours%>
+       <%= number_with_precision(version.spent_hours, precision: 2)%>
      </td>
      <td>
        <%= number_to_percentage(version.completed_percent, precision:0 )%>
