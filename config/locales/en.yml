@@ -7,7 +7,7 @@ en:
 
   label_menu_estatisticas: Statistics
 
-  lable_nome_version: Name
+  label_nome_version: Name
   label_desc_version: Description
   label_data_version: Deploy date
   label_total_tempo_estimado: Total estimated time
@@ -18,7 +18,7 @@ en:
   
   label_contorno: Environment
   label_data_dende: From(>=)
-  label_data_to: To(<=)
+  label_data_ata: To(<=)
 
   label_tipo_version: Type
   
