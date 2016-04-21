@@ -7,3 +7,15 @@ Debes crear un campo personalizado para o tipo de versión co nome que se config
 <%= label_tag 'settings[tipo_version]', l(:label_setting_tipo_version) %>
 <%= text_field_tag('settings[tipo_version]', @settings["tipo_version"] || defaults["tipo_version"]) %>
 </p>
+<p>
+<%= label_tag 'settings[min_horas]', l(:label_setting_min_horas) %>
+<%= text_field_tag('settings[min_horas]', @settings["min_horas"] || defaults["min_horas"]) %>
+</p>
+<p>
+<%= label_tag 'settings[max_horas]', l(:label_setting_max_horas) %>
+<%= text_field_tag('settings[max_horas]', @settings["max_horas"] || defaults["max_horas"]) %>
+</p>
+<p>
+<%= label_tag 'settings[distancia_dias]', l(:label_setting_distancia_dias) %>
+<%= text_field_tag('settings[distancia_dias]', @settings["distancia_dias"] || defaults["distancia_dias"]) %>
+</p>

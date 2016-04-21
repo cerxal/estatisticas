@@ -1,11 +1,9 @@
+
 require 'redmine'
 
-# Aqui permitimos sobreescribir o modelo da Version
-ActionDispatch::Callbacks.to_prepare do 
-  require_dependency 'version'
-  Version.send(:include, VersionPatch)
-  
-end
+# Añadimos el cambio en el modelo del TimeEntry
+TimeEntry.send(:include, TimeEntryPatch)
+Version.send(:include, VersionPatch)
 
 Redmine::Plugin.register :estatisticas do
   name 'Estatisticas plugin'
@@ -19,7 +17,13 @@ Redmine::Plugin.register :estatisticas do
     menu :project_menu, :estatisticas, { :controller => 'estatisticas', :action => 'mostrar' }, :caption => :label_menu_estatisticas, :after => :activity, :param => :project_id
   end
   
-  settings :default => {'tipo_version' => 'Tipo de versión'}, 
+  settings :default => {'tipo_version' => 'Tipo de versión',
+						'min_horas' => 0,
+						'max_horas' => 11,
+						'distancia_dias' => 0}, 
            :partial => 'settings/estatisticas_settings'
+           
+           
+  require_dependency 'hooks/controller_timelog_criterios_hook'
 
 end

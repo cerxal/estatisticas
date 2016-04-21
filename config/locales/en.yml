@@ -26,3 +26,7 @@ en:
   
   :true: 'Yes'
   :false: 'No'
+
+  label_setting_min_horas: Minimo numero de horas imputables por dia
+  label_setting_max_horas: Maximo numero de horas imputables por dia
+  label_setting_distancia_dias: Numero máximo de dias sin incurrir horas
