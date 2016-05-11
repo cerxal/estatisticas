@@ -8,6 +8,7 @@ class EstatisticasController < ApplicationController
 
   helper :queries
   helper :projects
+  helper :versions
   helper :custom_fields
   include QueriesHelper
   include EstatisticasHelper
@@ -19,8 +20,19 @@ class EstatisticasController < ApplicationController
       # Comprobacion dos parametros de filtro para crear o scope e enviar a vista
       # construye el scope en función de los parámetros que entran.
       # scope = @project.versions
-      @versions=Version.where("project_id=?",@project.id)
-
+      
+      # Obtiene solo las versions que son propias del proyecto
+      #@versions=Version.where("project_id=?",@project.id)
+      
+      # Obtiene todas las versions, incluidas las compartidas por arriba o por abajo
+      #@vs = @project.shared_versions || []
+      #@vs += @project.rolled_up_versions.visible 
+      #@vs = @vs.select {|version| version.shared? }
+      #@versions=Version.where(id: @vs.map(&:id))
+      
+      #Versiones compartidas dentro del proyecto
+      @versions = Version.where(id: @project.shared_versions.map(&:id))
+      
       # Incluir as versions pechadas
       if !params[:pechadas]
         @versions = @versions.where("status in ('open','locked')")
@@ -29,18 +41,17 @@ class EstatisticasController < ApplicationController
       # Incluir as versions que comenza por unha letra. Permite por exemplo filtrar todas as versions intermedias antes da final
       if params[:nome].present?
         @versions = @versions.where("name like :nome", nome: "#{params[:nome]}%")
-
       end
 
       # Contorno
       # TODO: Incluir el patronversion y los nombres de los entornos como elementos de configuracion del plugin
       patronversion = "(^[0-9]+\.{0}\.[0-9]+\.[0-9]+$)"
       if params[:contorno].present?
-	if params[:contorno]=='STG' 
+	      if params[:contorno]=='STG' 
        	  @versions = @versions.where("NOT name REGEXP ? ", patronversion) 
-	else
-       	  @versions = @versions.where("name REGEXP ? ", patronversion) 
-	end
+	      else
+       	  @versions = @versions.where("name REGEXP ? ", patronversion)
+	      end
       end
       # Data dende
       if params[:data_dende].present?

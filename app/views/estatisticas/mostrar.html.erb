@@ -40,7 +40,7 @@
 <tbody>
 <% @versions.each do |version| %>
   <tr class="<%= cycle("odd", "even") %>">
-     <td><%= link_to(h(version.name), :controller => :versions, :action => :show, :id => version) %></td>
+	 <td class="version"><%= link_to_version version, :name => version_anchor(version) %></td>
      <td>
        <%= version.description %>
      </td>
