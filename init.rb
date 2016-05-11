@@ -2,7 +2,8 @@
 require 'redmine'
 
 # Añadimos el cambio en el modelo del TimeEntry
-#TimeEntry.send(:include, TimeEntryPatch)
+TimeEntry.send(:include, TimeEntryPatch)
+
 Version.send(:include, VersionPatch)
 
 Redmine::Plugin.register :estatisticas do
@@ -22,7 +23,6 @@ Redmine::Plugin.register :estatisticas do
 						'max_horas' => 11,
 						'distancia_dias' => 0}, 
            :partial => 'settings/estatisticas_settings'
-           
            
   require_dependency 'hooks/timelog_criterios_hook'
 
