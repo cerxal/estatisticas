@@ -16,6 +16,42 @@ include CustomFieldsHelper
 			  patronversion = "(^[0-9]+\.{0}\.[0-9]+\.[0-9]+$)"
 			  return self.to_s.match(patronversion) ? "PRO" : "STG"
 			end
+      
+      
+      # Rerturn Schedule Performance Index
+      def SPI
+
+        #byebug
+        if self.estimated_hours>0 and !self.start_date.nil? and !self.due_date.nil?
+          hoxe_dias=(Date.parse(Time.now.to_s) - self.start_date).to_f
+          total_dias=(self.due_date-self.start_date).to_f
+          earned_value= (completed_percent * estimated_hours)/100 # Podria ser tambien las spent_hours
+          planned_value=(hoxe_dias/total_dias)*estimated_hours
+          return (earned_value/planned_value)
+        else
+          return 0
+        end
+
+      rescue
+        return 0
+
+      end
+
+      # Rerturn Cost Performance Index
+      def CPI
+        if self.spent_hours>0 and self.estimated_hours>0
+          earned_value= (self.completed_percent * self.estimated_hours)/100
+          actual_cost=self.spent_hours
+          return (earned_value/actual_cost)
+        else
+          return 0
+        end
+
+      rescue
+        return 0
+      end
+
+
 			
 			def tipo_version
 			  # Añade el campo tipo_version al objecto Version. Permite mostrar el tipo de version para cada caso

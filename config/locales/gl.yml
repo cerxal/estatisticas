@@ -8,12 +8,13 @@ gl:
   label_menu_estatisticas: Estatistica 
 
   label_nome_version: Nome
-  label_desc_version: Descrición versión
+  label_desc_version: Desc versión
+  label_ppio_version: Data inicio
   label_data_version: Data despregue
-  label_total_tempo_estimado: Tempo estimado
-  label_total_tempo_gastado: Tempo incurrido
+  label_total_tempo_estimado: T estimado
+  label_total_tempo_gastado: T incurrido
   label_tanto_porcento_completado: Completada 
-  label_estado_version: Estado 
+  label_estado_version: SPI/CPI 
   label_versions_pechadas: Incluir ver. pechadas
 
   label_contorno: Contorno

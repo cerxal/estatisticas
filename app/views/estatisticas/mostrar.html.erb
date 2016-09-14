@@ -29,6 +29,7 @@
 <thead><tr>
 <%= sort_header_tag('name', :caption => l(:label_nome_version)) %>
 <%= sort_header_tag('description', :caption => l(:label_desc_version)) %>
+<th><%= l(:label_ppio_version)%></th>
 <%= sort_header_tag('effective_date', :caption => l(:label_data_version)) %>
 <th><%= l(:label_total_tempo_estimado)%></th>
 <th><%= l(:label_total_tempo_gastado)%></th>
@@ -43,6 +44,9 @@
 	 <td class="version"><%= link_to_version version, :name => version_anchor(version) %></td>
      <td>
        <%= version.description %>
+     </td>
+     <td>
+       <%= version.start_date%>
      </td>
      <td class="<%= clase_version_retrasada(version.overdue?)%>">
        <%= version.effective_date%>
@@ -61,7 +65,8 @@
        <%= version.tipo_version%>
      </td>
      <td>
-       <%= version.status %>
+       <%= number_with_precision(version.SPI, precision: 2) %> /
+           <%= number_with_precision(version.CPI, precision: 2) %>
      </td>
      <td>
        <%= version.contorno %>

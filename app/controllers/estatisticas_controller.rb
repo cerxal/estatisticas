@@ -73,6 +73,7 @@ class EstatisticasController < ApplicationController
       columns = []
       columns << t(:label_nome_version)
       columns << t(:label_desc_version)
+      columns << t(:label_ppio_version)
       columns << t(:label_data_version) 
       columns << t(:label_total_tempo_estimado)
       columns << t(:label_total_tempo_gastado)

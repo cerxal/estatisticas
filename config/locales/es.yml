@@ -8,12 +8,13 @@ es:
   label_menu_estatisticas: Estadística
 
   label_nome_version: Nombre
-  label_desc_version: Descripción versión
+  label_desc_version: Desc versión
+  label_ppio_version: Fecha inicio
   label_data_version: Fecha despliegue
-  label_total_tempo_estimado: Tiempo estimado total
-  label_total_tempo_gastado: Tiempo incurrido total
-  label_tanto_porcento_completado: Completado
-  label_estado_version: Estado 
+  label_total_tempo_estimado: T estimado
+  label_total_tempo_gastado: T incurrido
+  label_tanto_porcento_completado: Completa
+  label_estado_version: SPI/CPI
   label_versions_pechadas: Incluir ver. cerradas
   
   label_contorno: Entorno

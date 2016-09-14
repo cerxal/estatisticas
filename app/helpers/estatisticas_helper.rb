@@ -33,9 +33,10 @@ module EstatisticasHelper
 
       # Incluir filas 
       items.each do |item|
-        csv << [item.name, item.description, item.due_date, item.estimated_hours, item.spent_hours, 
-				sprintf("%.2f",item.completed_percent).gsub('.', l(:general_csv_decimal_separator)) + humanize_boolean(item.completed?), 
-				item.tipo_version, item.status, item.contorno]
+        csv << [item.name, item.description, item.start_date, item.due_date, item.estimated_hours, item.spent_hours,
+        sprintf("%.2f",item.completed_percent).gsub('.', l(:general_csv_decimal_separator)) + humanize_boolean(item.completed?),
+        item.tipo_version, sprintf("%.2f",item.SPI).gsub('.', l(:general_csv_decimal_separator)) + "/" +
+        sprintf("%.2f",item.CPI).gsub('.', l(:general_csv_decimal_separator)), item.contorno]
       end
     end
 
