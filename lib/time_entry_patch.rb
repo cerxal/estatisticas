@@ -12,19 +12,20 @@ require_dependency 'time_entry'
 		  # Aparte inclue a validacion de non facer mais de 11 horas ao dia
 		  def validate_time_entry
 
-			# Comprobaciones originales
+			# Comprobacion original de horas
 			#errors.add :hours, :invalid if hours && (hours < 0 || hours >= 1000)
-      errors.add :hours, :invalid if hours && (hours < 0 || hours >= 5)
-			errors.add :project_id, :invalid if project.nil?
+      
+      # Engadidos por min
+      # A imputacion de horas debe estar entre os valores configurados para o plugin
+      errors.add :hours, :invalid if hours && (hours < Setting.plugin_estatisticas['min_horas'].to_i || hours >= Setting.plugin_estatisticas['max_horas'].to_i)
+			# Non se poden imputar horas con mais de X dias de distancia
+      errors.add :spent_on, :invalid if (spent_on - Date.today).to_i.abs > Setting.plugin_estatisticas['distancia_dias'].to_i
+      # Fin engadidos por min
+      
+      errors.add :project_id, :invalid if project.nil?
 			errors.add :issue_id, :invalid if (issue_id && !issue) || (issue && project!=issue.project) || @invalid_issue_id
 			errors.add :activity_id, :inclusion if activity_id_changed? && project && !project.activities.include?(activity)
 		  
-			# Sobreescritura
-			#errors.add :spent_on, :invalid if (spent_on - Date.today).to_i.abs > Setting.plugin_estatisticas['distancia_dias'].to_i
-			#errors.add :hours, :invalid if hours && (hours < Setting.plugin_estatisticas['min_horas'].to_i || hours >= Setting.plugin_estatisticas['max_horas'].to_i)
-			#errors.add :project_id, :invalid if project.nil?
-			#errors.add :issue_id, :invalid if (issue_id && !issue) || (issue && project!=issue.project) || @invalid_issue_id
-			#errors.add :activity_id, :inclusion if activity_id_changed? && project && !project.activities.include?(activity)
 		  end
 		end
 	   end
