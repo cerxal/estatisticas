@@ -79,7 +79,7 @@ class EstatisticasController < ApplicationController
       columns << t(:label_total_tempo_gastado)
       columns << t(:label_tanto_porcento_completado)
       columns << t(:label_tipo_version)
-      columns << t(:label_estado_version)
+      #columns << t(:label_estado_version)
       columns << t(:label_contorno)
 
       respond_to do |format|

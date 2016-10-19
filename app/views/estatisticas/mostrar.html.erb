@@ -35,7 +35,7 @@
 <th><%= l(:label_total_tempo_gastado)%></th>
 <th><%= l(:label_tanto_porcento_completado)%></th>
 <th><%= l(:label_tipo_version)%></th>
-<th><%= l(:label_estado_version)%></th>
+<!--<th><%= l(:label_estado_version)%></th> -->
 <th><%= l(:label_contorno)%></th>
 </tr></thead>
 <tbody>
@@ -64,10 +64,12 @@
      <td>
        <%= version.tipo_version%>
      </td>
+	 <!--
      <td>
        <%= number_with_precision(version.SPI, precision: 2) %> /
            <%= number_with_precision(version.CPI, precision: 2) %>
      </td>
+	-->
      <td>
        <%= version.contorno %>
      </td>

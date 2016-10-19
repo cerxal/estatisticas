@@ -11,8 +11,8 @@ es:
   label_desc_version: Desc versión
   label_ppio_version: Fecha inicio
   label_data_version: Fecha despliegue
-  label_total_tempo_estimado: T estimado
-  label_total_tempo_gastado: T incurrido
+  label_total_tempo_estimado: Tiempo estimado
+  label_total_tempo_gastado: Tiempo incurrido
   label_tanto_porcento_completado: Completa
   label_estado_version: SPI/CPI
   label_versions_pechadas: Incluir ver. cerradas

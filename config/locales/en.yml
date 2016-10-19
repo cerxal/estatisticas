@@ -11,9 +11,9 @@ en:
   label_desc_version: Description
   label_ppio_version: Start date
   label_data_version: Deploy date
-  label_total_tempo_estimado: Estimated t
-  label_total_tempo_gastado: Spent t
-  label_tanto_porcento_completado: Compl
+  label_total_tempo_estimado: Estimated time
+  label_total_tempo_gastado: Spent time
+  label_tanto_porcento_completado: Completed
   label_estado_version: SPI/CPI
   label_versions_pechadas: Include closed ver.
   
